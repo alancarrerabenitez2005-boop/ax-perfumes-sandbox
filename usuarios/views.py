@@ -1,17 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegistroUsuarioForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def registro(request):
     if request.method == 'POST':
-        form = RegistroUsuarioForm(request.POST)
+        form = UserCreationForm(request.POST) # <--- Usamos el formulario oficial de creación de usuarios de Django
         if form.is_valid():
             form.save()
             return redirect('login')
     else:
-        form = RegistroUsuarioForm()
+        form = UserCreationForm()
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def login_view(request):
@@ -20,7 +19,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')  # <--- Aquí forzamos la redirección directa al home
+            return redirect('home')
     else:
         form = AuthenticationForm()
     return render(request, 'usuarios/login.html', {'form': form})
