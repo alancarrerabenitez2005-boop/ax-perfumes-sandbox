@@ -1,0 +1,59 @@
+{% extends 'usuarios/base.html' %}
+
+{% block title %}Iniciar Sesión - AX Perfumes{% endblock %}
+
+{% block content %}
+<div class="container min-vh-100 d-flex align-items-center">
+    <div class="row w-100 align-items-center my-auto">
+        <!-- Columna Izquierda: Identidad de Marca -->
+        <div class="col-lg-6 text-white mb-5 mb-lg-0 pe-lg-5">
+            <h1 class="brand-title mb-2">AX PERFUMES</h1>
+            <p class="text-uppercase tracking-widest small text-white-50 mb-4" style="letter-spacing: 4px;">EAU DE PARFUM • HAUTE PARFUMERIE</p>
+            <p class="lead opacity-75 mb-4" style="font-weight: 300; line-height: 1.8;">
+                Descubre una colección concebida bajo la elegancia atemporal y la sofisticación. Ingresa a tu espacio privado para gestionar tus fragancias exclusivas.
+            </p>
+            <div class="d-flex gap-4 fs-5 text-white opacity-75">
+                <a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario -->
+        <div class="col-lg-5 offset-lg-1">
+            <div class="auth-card">
+                <h3 class="fw-bold mb-1 text-center">INICIAR SESIÓN</h3>
+                <p class="text-center small text-white-50 mb-4" style="letter-spacing: 1px;">INGRESA A TU CUENTA</p>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase opacity-75" style="letter-spacing: 1px;">Usuario</label>
+                        <input type="text" name="username" class="form-control" placeholder="Nombre de usuario" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase opacity-75" style="letter-spacing: 1px;">Contraseña</label>
+                        <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label small opacity-75" for="rememberMe">
+                            Recordar mi sesión
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-custom w-100 mb-3">INGRESAR</button>
+                </form>
+
+                <div class="d-flex justify-content-between align-items-center small mt-3">
+                    <a href="#" class="text-white-50 text-decoration-none">¿Olvidaste tu contraseña?</a>
+                    <a href="{% url 'registro' %}" class="text-white fw-semibold text-decoration-none">Crear cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'usuarios/base.html' %}
+
+{% block title %}Inicio - AX Perfumes{% endblock %}
+
+{% block content %}
+<div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center text-center py-5">
+    <div class="auth-card p-5 col-md-8 col-lg-6">
+        <h1 class="brand-title mb-2">AX PERFUMES</h1>
+        <p class="text-uppercase tracking-widest small text-white-50 mb-4" style="letter-spacing: 3px;">BIENVENIDO A TU PANEL PRIVADO</p>
+        
+        <h3 class="mb-3" style="font-weight: 400;">Hola, <span class="fw-bold">{{ user.username }}</span></h3>
+        <p class="lead opacity-75 mb-4" style="font-size: 0.95rem; line-height: 1.8;">
+            Tu sesión ha sido autenticada con éxito. Estás listo para explorar y gestionar la colección.
+        </p>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-custom px-5 py-2">
+                <i class="fas fa-sign-out-alt me-2"></i>CERRAR SESIÓN
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
