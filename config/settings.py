@@ -133,3 +133,4 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'  # O la ruta de tu módulo 1 una vez que inicie sesión
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
